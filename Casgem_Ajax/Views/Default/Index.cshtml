@@ -47,8 +47,12 @@
         <h3>ID' ye Göre Müşteri Getirme</h3>
         <input type="text" class="form-control" id="txtcustomerid" placeholder="Bilgilerini getirmek istediğiniz ID değerini giriniz" />
         <br />
-        <hr />
     </div>
+
+    <div id="customerlistbyid">
+
+    </div>
+    <hr />
 </div>
 
 <script>
@@ -133,6 +137,21 @@
             success:function(funk4){
                 let result = jQuery.parseJSON(funk4);
                 console.log(result);
+                let htmlstr = `<table class=table table-hover>
+                <tr>
+                    <th>Müşteri ID </th>
+                    <th>Müşteri Adı </th>
+                    <th>Müşteri Soyadı </th>
+                    <th>Müşteri Şehri </th>
+                </tr>
+                <tr>
+                    <td>${result.CustomerID}</td>
+                    <td>${result.Name}</td>
+                    <td>${result.Surname}</td>
+                    <td>${result.City}</td>
+                </tr>
+                </table>`;
+                $("#customerlistbyid").html(htmlstr);
             }
         });
     });
